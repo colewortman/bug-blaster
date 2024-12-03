@@ -20,11 +20,17 @@ export default function TicketForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const ticketData = {
+      id: new Date().toISOString(),
+      title,
+      description,
+      priority,
+    };
     clearForm();
   };
 
   return (
-    <form className="ticket-form">
+    <form onSubmit={handleSubmit} className="ticket-form">
       <div>
         <label>Title</label>
         <input
@@ -60,7 +66,7 @@ export default function TicketForm() {
       </fieldset>
 
       <button type="submit" className="button">
-        submit
+        Submit
       </button>
     </form>
   );
